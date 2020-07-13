@@ -1,0 +1,72 @@
+#eclipse stuff
+.cproject
+.dep/
+.project
+.settings/
+.pydevproject
+
+#OS
+.gdb_history
+.DS_Store
+
+#binaries
+build
+Arepo*
+Arepo.dSYM
+Tenet
+Tenet.dSYM
+.build*/
+*.o
+*.check
+*.pyc
+
+#potentially large files
+*.h5
+*.hdf5
+*.dat
+*.bin
+
+#media files
+*.mp4
+*.png
+*.eps
+*.jpg
+*.jpeg
+*.pdf
+*.out
+*.mod
+
+#Config files
+/Config*.sh
+/Makefile.systype
+/param.txt
+/parameter.txt
+/Run1.tex
+/param.tex
+/param.param
+
+
+#Output folders
+/out
+/output
+/run
+balance.txt
+cpu.txt
+info.txt
+domain.txt
+memory.txt
+timebins.txt
+timings.txt
+energy.txt
+*-usedvalues
+restartfiles/
+uses-machines.txt
+WARNINGS
+
+#IDE files
+*.sublime-project
+*.sublime-workspace
+
+/doxygen
+/documentation/ref
+
