@@ -1,0 +1,228 @@
+
+InitCondFile        arepo_input.dat
+OutputDir           ./
+SnapshotFileBase    snapshot
+
+% CPU-time limit
+
+TimeLimitCPU      259200
+ResubmitOn        0
+ResubmitCommand   xyz
+MaxMemSize        3000
+
+% Code options
+
+ICFormat              2
+SnapFormat            2
+
+ComovingIntegrationOn 0
+
+NumFilesPerSnapshot       1
+NumFilesWrittenInParallel 1
+
+CoolingOn       0
+StarformationOn 0
+ 
+%  Caracteristics of run
+
+TimeBegin          0.0  
+TimeMax	           39.561
+
+Omega0	                 0.304 %0.3036
+OmegaLambda              0.696 %0.6964
+OmegaBaryon              0.048
+HubbleParam           1.0     ; only needed for cooling
+
+BoxSize               230.809
+PeriodicBoundariesOn  0 
+
+% Softening lengths
+
+GasSoftFactor      2.0
+
+MinimumComovingHydroSoftening  	0.000172103
+AdaptiveHydroSofteningSpacing	1.2
+
+SofteningComovingType0		0.000172103
+SofteningComovingType1		0.
+SofteningComovingType2		0.
+SofteningComovingType3		0.
+SofteningComovingType4		0.
+SofteningComovingType5		0.000172103
+
+SofteningMaxPhysType0		0.000172103
+SofteningMaxPhysType1		0
+SofteningMaxPhysType2		0
+SofteningMaxPhysType3		0
+SofteningMaxPhysType4		0
+SofteningMaxPhysType5           0.000172103
+
+SofteningTypeOfPartType0 	0
+SofteningTypeOfPartType1	1
+SofteningTypeOfPartType2	2
+SofteningTypeOfPartType3	3
+SofteningTypeOfPartType4	4
+SofteningTypeOfPartType5	5
+
+
+
+% Output frequency
+
+OutputListOn        0
+OutputListFilename  TIMES_simple.txt
+
+TimeBetSnapshot        0.05
+TimeOfFirstSnapshot    0.0 
+CpuTimeBetRestartFile  10800 
+TimeBetStatistics      0.05
+
+
+% Accuracy of time integration
+
+TypeOfTimestepCriterion 0   
+ErrTolIntAccuracy       0.05  
+MaxSizeTimestep        0.0001
+MinSizeTimestep        1e-8
+
+
+% Tree algorithm and force accuracy
+
+ErrTolTheta             0.4
+TypeOfOpeningCriterion  1
+ErrTolForceAcc          0.0025
+%TreeDomainUpdateFrequency    0.1
+
+
+%  Parameters of SPH
+
+DesNumNgb           33
+MaxNumNgbDeviation  0
+InitGasTemp         10.0  % initial gas temperature in K, only used if not given in IC file
+
+% Note: IGM temperature stays coupled to CMB temperature until
+% thermalization redshift: z_t = 750 * (Omega_b * h^2) ~ 150
+
+
+MinGasTemp          0.00001    
+CourantFac          0.5
+
+
+%Domain parameters
+MultipleDomains		8
+TopNodeFactor		4
+ActivePartFracForNewDomainDecomp 0.01
+
+% System of units
+
+UnitLength_in_cm         1.0e+17        
+UnitMass_in_g            1.991E33           ;  1.0e10 solar masses
+UnitVelocity_in_cm_per_s 36447.268200       ;  1 km/sec
+GravityConstantInternal  0
+
+
+% Prescribed Minima
+
+LimitUBelowThisDensity   0
+LimitUBelowCertainDensityToThisValue  0
+%EntropyTolFactor	        0.001
+MinimumDensityOnStartUp   1.0e-10
+
+MinEgySpec	        0
+%MeanVolume	        0
+%MeanMass	        0
+
+%MHDSeedDir          1
+%MHDSeedValue        0 % no mag field! 
+
+
+%Cell Refinement and shaping
+%%CellShapingFactor          2
+CellMaxAngleFactor	    2.0
+CellShapingSpeed	     0.5
+ReferenceGasPartMass        0.001 %%% box vol * 1cc /64**3 : only for background grid!             
+TargetGasMassFactor         1.0  % gas mass below which REFINEMENT_HIGH_RES_GAS is applied
+MaxVolumeDiff           8  
+MaxVolume               30  % box volume / 2e5
+MinVolume               5.09759e-12 % rj_min**3 / 2**3 
+RefinementCriterion     2
+DerefinementCriterion   2
+
+%Sink Options
+SinkCreationDensityCodeUnits    1.0e8  % roughly  10^17cm^3
+SinkFormationRadius             0.0014                 % 2 au
+SinkEvolutionDumpRateYears      0.1
+
+% Chemistry Options
+SGChemConstInitAbundances 1
+
+SGChemInitH2Abund       1.0e-3
+SGChemInitHPAbund       1.0e-7
+SGChemInitDIIAbund      2.6e-12          %single-ionised: Dp
+SGChemInitHDAbund       3.e-7
+%SGChemInitHeIIAbund    0.               %single-ionised: Hep
+SGChemInitHeIIIAbund    0.
+
+% For networks 5 & 13
+SGChemInitCPAbund       0.0
+SGChemInitCOAbund       0.0
+
+% For Nelson and Langer 99
+SGChemInitCHxAbund      0.
+SGChemInitOHxAbund      0.
+SGChemInitHCOPAbund     0.
+SGChemInitHePAbund      0.
+SGChemInitMPAbund       0.
+%SGChemInitDIIAbund      0.
+%SGChemInitHDAbund       0.
+%SGChemInitHeIIIAbund    0.
+
+% Elemental abundances
+CarbAbund               0.
+OxyAbund                0. 
+MAbund                  0. 
+DeutAbund               2.6e-5
+
+% Accretion Luminosity heating
+SGChemAccretionLuminosityOn     1
+SinkAccretionRateSmoothingMass  0
+
+% Dust properties
+InitDustTemp     0.
+UVFieldStrength  0.     % UV field strength in units of Habing field
+DustToGasRatio   0.     %dust to gas ratio in units of local (i.e. Z = Z_sun) value
+CosmicRayIonRate  0.
+
+InitRedshift    20.0
+
+% High T cooling
+ZAtom                   0 % This controls the metallicity of the metal line cooling
+AtomicCoolOption        2 % new metal cooling
+
+ExternalDustExtinction   0.0  %Visual magnitudes of dust extinction contributed by gas outside of simulation volume:
+
+% Strength of H2 formation heating
+H2FormEx     0
+H2FormKin    0
+
+% Photochemistry
+PhotoApprox    6		% 0==optically thin, 6==Treecol 
+ISRFOption     1		% 1 == Mathis et al (1983), 2 == Black (1994)
+
+LWBGType               0
+LWBGStartRedsh         0
+%  TreeColMaxDistance     925.68
+H2OpacityOption	       3
+
+% Image generation
+%PicXpixels 800
+%PicYpixels 800
+%PicXaxis   0
+%PicYaxis   1
+%PicZaxis   2
+%PicXmin    409.0407
+%PicXmax    954.4284
+%PicYmin    409.0407
+%PicYmax    954.4284
+%PicZmin    0
+%PicZmax    5000
+%%TimeBetweenImages 0.1
