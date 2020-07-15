@@ -1,0 +1,18 @@
+ file basename      : vel3D
+ data per direction : 64
+ total data per dir : 262144
+ total data         : 786432
+ data type          : double precision
+ file size [MB]     : 6
+ kmin               : 1
+ kpeak              : 1
+ kmax               : 31
+ power spec indx lo : 2
+ power spec indx hi : -2
+ init seed          : 43
+ seed dimension 1   : 43
+ seed dimension 2   : 60
+ seed dimension 3   : 66
+ symmetric field    : 0
+ random phase       : 1
+ vel std dev norm   : 0.57735
